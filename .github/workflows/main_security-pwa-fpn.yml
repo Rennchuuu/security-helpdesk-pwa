@@ -10,26 +10,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the code
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Set up Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '18'
+        node-version: '16'
 
-    # Install dependencies and build the app
     - name: Install dependencies and build
       run: |
         npm install
         npm run build --prod
 
-    # Deploy to Azure Web App
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
-        app-name: 'security-helpdesk-pwa' # Replace with your Azure Web App name
+        app-name: 'security-pwa-fpn' # Replace with your Azure Web App name
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: ./dist/security-helpdesk-pwa # Replace with the correct path
+        package: ./dist/security-helpdesk-pwa # Ensure this matches your Angular build output folder
