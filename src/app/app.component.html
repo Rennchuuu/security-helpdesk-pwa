@@ -1,0 +1,13 @@
+<div class="header" style="background-color: lightpurple; padding: 10px; text-align: center;">
+  <h1>Security Helpdesk PWA</h1>
+</div>
+
+<div class="content" style="text-align: center; margin-top: 50px;">
+  <!-- Install Button -->
+  <button *ngIf="!isAppInstalled && isInstallPromptAvailable" (click)="installApp()">Install</button>
+  <p *ngIf="isAppInstalled">PWA is saved on your local device</p>
+  
+  <!-- Push Notification Toggle -->
+  <label for="push-toggle">Enable Push Notifications</label>
+  <input id="push-toggle" type="checkbox" [(ngModel)]="pushNotificationEnabled" (change)="togglePushNotifications()" />
+</div>
