@@ -23,6 +23,11 @@ jobs:
         npm install
         npm run build --prod
 
+    - name: Debug Build Output
+      run: |
+        echo "Listing contents of the dist/security-helpdesk-pwa directory:"
+        ls -al ./dist/security-helpdesk-pwa
+
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
